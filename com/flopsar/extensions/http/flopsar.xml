@@ -1,0 +1,81 @@
+<tracer id="HTTP_0" enable="false" >
+        <interfaces mode="or">
+          <value>javax.servlet.Filter</value>        	
+        </interfaces>
+        <methods>
+          <case-signatures>
+        <method inject="enter" formatter="com.flopsar.extensions.http.HTTPFormatter" format="reqresp" group="HTTP">      
+	<msignature>void doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)</msignature>	
+		<param>1</param>
+            </method> 	
+          </case-signatures>
+        </methods>
+      </tracer>
+   
+      <tracer id="HTTP_1" enable="true" >
+        <interfaces mode="or">
+          <value>javax.servlet.Servlet</value>
+          <value>javax.servlet.jsp.JspPage</value>
+        </interfaces>
+        <methods>
+          <case-signatures>
+            <method inject="enter" formatter="com.flopsar.extensions.http.HTTPFormatter" format="reqresp" group="HTTP">
+              <msignature>void service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)</msignature>	
+              <param>1</param>
+            </method> 	
+          </case-signatures>
+        </methods>
+      </tracer>
+      
+      <tracer id="HTTP_2" enable="true" >
+        <superclass deep="true">javax.servlet.http.HttpServlet</superclass>
+        <methods>
+          <case-signatures>
+            <method inject="enter" formatter="com.flopsar.extensions.http.HTTPFormatter" format="reqresp" group="HTTP">
+              <msignature>void service(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)</msignature>	
+              <param>1</param>
+            </method>
+          </case-signatures>
+        </methods>
+      </tracer>
+      
+      <tracer id="HTTP_3" enable="true">
+        <interfaces mode="or">
+          <value>javax.servlet.jsp.HttpJspPage</value>
+        </interfaces>
+        <methods>
+          <case-signatures>
+            <method inject="enter" formatter="com.flopsar.extensions.http.HTTPFormatter" format="reqresp" group="HTTP">
+              <msignature>void _jspService(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)</msignature>	
+              <param>1</param>
+            </method>
+          </case-signatures>
+        </methods>
+      </tracer>
+      
+      <tracer id="HTTP_4" enable="true">
+        <interfaces mode="or">
+          <value>javax.servlet.http.HttpServletResponse</value>
+        </interfaces>
+        <methods>
+          <case-signatures>
+            <method inject="enter" formatter="com.flopsar.extensions.http.HTTPFormatter" format="status" group="HTTP">
+              <msignature>void sendError(int)</msignature>	          														
+              <param>1</param>
+            </method>
+            <method formatter="com.flopsar.extensions.standard.HTTPFormatter" format="status" group="HTTP">
+              <msignature>void sendError(int,java.lang.String)</msignature>	   
+              <param>1</param>       														
+            </method>
+            <method formatter="com.flopsar.extensions.standard.HTTPFormatter" format="status" group="HTTP">
+              <msignature>void setStatus(int)</msignature>	          														
+              <param>1</param>     
+            </method>
+            <method formatter="com.flopsar.extensions.standard.HTTPFormatter" format="status" group="HTTP">
+              <msignature>void setStatus(int,java.lang.String)</msignature>	          												
+              <param>1</param>
+            </method>
+          </case-signatures>
+        </methods>
+      </tracer>    
+      

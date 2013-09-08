@@ -1,0 +1,172 @@
+ <tracer id="JDBC_1" enable="true" >
+        <interfaces mode="or">
+          <value>java.sql.Driver</value>
+        </interfaces>
+        <methods>
+          <case-signatures>
+            <method inject="enter">
+              <msignature>java.sql.Connection connect(java.lang.String,java.util.Properties)</msignature>	
+              <param alias="URL">1</param>
+            </method>
+          </case-signatures>
+        </methods>
+      </tracer>
+      <tracer id="JDBC_2" enable="true" >
+        <interfaces mode="or">
+          <value>java.sql.Statement</value>
+          <value>com.ibm.db2.jcc.DB2Statement</value>
+          <value>org.postgresql.core.BaseStatement</value>
+	  <value>oracle.jdbc.driver.OracleStatement </value>    					
+	  <value>oracle.jdbc.driver.OracleCallableStatement</value>
+	  <value>oracle.jdbc.internal.OracleCallableStatement</value>
+	  <value>oracle.jdbc.internal.OracleStatement</value>
+	  <value>oracle.jdbc.OracleCallableStatement</value>			
+        </interfaces>
+        <methods>
+          <case-signatures>
+          	<method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>boolean execute(java.lang.String)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>
+            <method  formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>boolean execute(java.lang.String,int)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>        
+            <method inject="exit" formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>boolean execute(java.lang.String,int[])</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>
+            <method  formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>boolean execute(java.lang.String,java.lang.String[])</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method> 
+            <method  formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>int executeUpdate(java.lang.String)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>
+            <method  formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>int executeUpdate(java.lang.String,int)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method> 
+            <method  formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>int executeUpdate(java.lang.String,int[])</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>   
+            <method  formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>int executeUpdate(java.lang.String,java.lang.String[])</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method> 
+            <method  formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="statements">
+              <msignature>java.sql.ResultSet executeQuery(java.lang.String)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>          		          		       		         		     		
+          </case-signatures>
+        </methods>
+      </tracer>
+      <tracer id="JDBC_3" enable="true">
+        <interfaces mode="or">
+          <value>java.sql.Connection</value>
+	  <value>oracle.jdbc.OracleConnection</value>
+	  <value>oracle.jdbc.internal.OracleConnection</value>
+	  <value>oracle.jdbc.driver.OracleConnection</value>
+	  <value>oracle.jdbc.driver.OracleDriverExtension</value>
+	  <value>weblogic.jdbc.base.BaseConnection</value>
+        </interfaces>
+        <methods>
+          <case-signatures>
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format1">
+              <msignature>java.sql.CallableStatement prepareCall(java.lang.String)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format1">
+              <msignature>java.sql.CallableStatement prepareCall(java.lang.String,int,int)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>      
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format1">
+              <msignature>java.sql.CallableStatement prepareCall(java.lang.String,int,int,int)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method> 
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format1">
+              <msignature>java.sql.PreparedStatement prepareStatement(java.lang.String)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>    		     
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format1">
+              <msignature>java.sql.PreparedStatement prepareStatement(java.lang.String,int)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method> 
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format1">
+              <msignature>java.sql.PreparedStatement prepareStatement(java.lang.String,int[])</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>  
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format1">
+              <msignature>java.sql.PreparedStatement prepareStatement(java.lang.String,int,int)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method> 
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format1">
+              <msignature>java.sql.PreparedStatement prepareStatement(java.lang.String,int,int,int)</msignature>	
+              <param>0</param>
+              <param>1</param>
+            </method>          				         		     		
+          </case-signatures>
+        </methods>
+      </tracer>
+      <tracer id="JDBC_4" enable="true" >
+        <interfaces mode="or">
+          <value>java.sql.PreparedStatement</value>
+          <value>java.sql.CallableStatement</value>
+	  <value>oracle.jdbc.OraclePreparedStatement</value>
+	  <value>oracle.jdbc.internal.OraclePreparedStatement</value>
+	  <value>oracle.jdbc.driver.OraclePreparedStatement</value>
+	</interfaces>
+        <methods>
+          <case-signatures>
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format2">
+              <msignature>boolean execute()</msignature>	
+              <param>0</param>
+            </method>
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format2">
+              <msignature>int executeUpdate()</msignature>	
+              <param>0</param>
+            </method>      
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format2">
+              <msignature>java.sql.ResultSet executeQuery()</msignature>	
+              <param>0</param>
+            </method>          		     		
+          </case-signatures>
+        </methods>
+      </tracer>
+      <tracer id="JDBC_5" enable="true" >
+	<classname>org.postgresql.jdbc2.AbstractJdbc2Statement</classname>
+        <methods>
+          <case-signatures>
+            <method  formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format2">
+              <msignature>boolean execute()</msignature>	
+              <param>0</param>
+            </method>
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format2">
+              <msignature>int executeUpdate()</msignature>	
+              <param>0</param>
+            </method>      
+            <method formatter="com.flopsar.extensions.jdbc.JDBCFormatter" format="format2">
+              <msignature>java.sql.ResultSet executeQuery()</msignature>	
+              <param>0</param>
+            </method>          		     		
+          </case-signatures>
+        </methods>
+      </tracer>
