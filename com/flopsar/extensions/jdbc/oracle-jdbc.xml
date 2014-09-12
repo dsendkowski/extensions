@@ -1,4 +1,9 @@
 
+<excludes>
+   <class>oracle.jdbc.driver.OraclePreparedStatementWrapper</class>
+</excludes>
+
+
 
 <tracer id="ORACLE_PS1" enable="true">
 <interfaces mode="or">
@@ -6,15 +11,15 @@
 </interfaces>
 <methods>
 <case-signatures>
-<method formatter="com.flopsar.extensions.standard.JDBCOracle" format="psql">
+<method formatter="com.flopsar.extensions.jdbc.JDBCOracle" format="psql">
   <msignature>boolean execute()</msignature>	
   <param>0</param>
  </method>
- <method formatter="com.flopsar.extensions.standard.JDBCOracle" format="psql">
+ <method formatter="com.flopsar.extensions.jdbc.JDBCOracle" format="psql">
   <msignature>int executeUpdate()</msignature>	
      <param>0</param>
   </method>      
-  <method formatter="com.flopsar.extensions.standard.JDBCOracle" format="psql">
+  <method formatter="com.flopsar.extensions.jdbc.JDBCOracle" format="psql">
     <msignature>java.sql.ResultSet executeQuery()</msignature>	
      <param>0</param>
   </method>
