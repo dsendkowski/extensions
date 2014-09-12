@@ -99,7 +99,7 @@ public class HTTPFormatter {
 				
 				return r.getParam();
 			} catch (Throwable e) {
-				return "NA";
+				return "EXCEPTION|"+e.getMessage();
 			}
         }
 	
