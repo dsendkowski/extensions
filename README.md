@@ -9,7 +9,7 @@ This repository is a collection of some popular formatters along with their conf
 
 ## License
 
-Copyright (c) 2013, Flopsar Technology Sp. z o.o.
+Copyright (c) 2013-present, Flopsar Technology Sp. z o.o.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
